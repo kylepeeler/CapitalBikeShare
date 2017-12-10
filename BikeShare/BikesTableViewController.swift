@@ -29,7 +29,6 @@ class BikesTableViewController: UITableViewController, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //Calculate the center point
         if let location = locations.last{
             print("got latitude as \(location.coordinate.latitude)")
             print("got longitude as \(location.coordinate.longitude)")
@@ -48,6 +47,16 @@ class BikesTableViewController: UITableViewController, CLLocationManagerDelegate
         cell.textLabel?.text = "\(Bike.bikes[indexPath.row].bike_code!)"
         cell.detailTextLabel?.text = "\(Bike.bikes[indexPath.row].distance!) miles"
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBikeDetail" {
+            let detailView = segue.destination as! BikeDetailViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let selectedBike = Bike.bikes[indexPath.row]
+                detailView.selectedBike = selectedBike
+            }
+        }
     }
 
 }
