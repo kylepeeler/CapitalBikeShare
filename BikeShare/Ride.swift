@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class Ride: NSObject {
     var id: Int?
@@ -17,7 +18,50 @@ class Ride: NSObject {
     var end_latitude: String?
     var end_longitude: String?
     var total_cost: Int?
+    var bike_code: Int?
     static var rides = [Ride]()
+    var start_time_as_date: Date?{
+        get{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+            dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+            return dateFormatter.date(from: start_time!)
+        }
+    }
+    var end_time_as_date: Date?{
+        get{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+            dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+            return dateFormatter.date(from: end_time!)
+        }
+    }
+    var time_difference: String?{
+        get{
+            let formatter = DateComponentsFormatter()
+            formatter.unitsStyle = .full
+            formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
+            formatter.maximumUnitCount = 2
+            return formatter.string(from: start_time_as_date!, to: end_time_as_date!)
+        }
+    }
+    var start_location: CLLocationCoordinate2D{
+        get{
+            let latitude = (start_latitude! as NSString).doubleValue
+            let longitude = (start_longitude! as NSString).doubleValue
+            return CLLocationCoordinate2D(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
+        }
+
+    }
+    
+    var end_location: CLLocationCoordinate2D{
+        get{
+            let latitude = (end_latitude! as NSString).doubleValue
+            let longitude = (end_longitude! as NSString).doubleValue
+            return CLLocationCoordinate2D(latitude: latitude as CLLocationDegrees, longitude: longitude as CLLocationDegrees)
+        }
+    }
+
     static func convertDateToReadable(date: String) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"

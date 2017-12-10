@@ -34,4 +34,14 @@ class RidesTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRideDetail" {
+            let detailView = segue.destination as! RideDetailViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let selectedRide = Ride.rides[indexPath.row]
+                detailView.selectedRide = selectedRide
+            }
+        }
+    }
 }
