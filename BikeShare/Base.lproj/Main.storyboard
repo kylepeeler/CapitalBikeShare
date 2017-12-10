@@ -149,7 +149,7 @@
         <scene sceneID="cNi-2g-2JF">
             <objects>
                 <navigationController id="2PB-Dc-Cij" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bikes" id="Src-5u-Yqq"/>
+                    <tabBarItem key="tabBarItem" title="Bikes" image="bikeicon" id="Src-5u-Yqq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="95R-7L-boF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -214,7 +214,7 @@
         <scene sceneID="CaW-on-pCj">
             <objects>
                 <navigationController id="Amr-p9-DHI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="8TD-vo-kTt"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user_male" id="8TD-vo-kTt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ay-dI-SP4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -284,7 +284,7 @@
         <scene sceneID="WD5-Ob-bLn">
             <objects>
                 <navigationController id="wvg-EX-0Kf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rides" id="AL9-zp-h2n"/>
+                    <tabBarItem key="tabBarItem" title="Rides" image="rideicon" selectedImage="rideicon" id="AL9-zp-h2n"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cTu-Eb-nuG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -319,6 +319,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bikeicon" width="30" height="30"/>
         <image name="capital_bikeshare" width="539" height="93"/>
+        <image name="rideicon" width="30" height="30"/>
+        <image name="user_male" width="30" height="30"/>
     </resources>
 </document>
