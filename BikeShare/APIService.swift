@@ -135,4 +135,48 @@ class APIService: NSObject {
             }
         }.resume()
     }
+    
+    func getBikes(latitude: String, longitude: String, distance: Int){
+        guard let token = UserDefaults.standard.string(forKey: "RequestToken") else{
+            return
+        }
+        let urlString = "https://" + baseURL + "bikes/near/" + token + "/" + latitude + "/" + longitude + "/" + "\(distance)"
+        print("getting bikes at URL \(urlString)")
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                if let parsedResult = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
+                    if let bikes = parsedResult["bikes"] as? [[String: AnyObject]] {
+                        Bike.bikes = [Bike]()
+                        for dict in bikes {
+                            let bike = Bike()
+                            bike.bike_code = dict["bike_code"] as? Int
+                            bike.distance = dict["distance"] as? Double
+                            bike.latitude = dict["latitude"] as? String
+                            bike.longitude = dict["longitude"] as? String
+                            bike.status = dict["status"] as? Int
+                            Bike.bikes.append(bike)
+                        }
+                        DispatchQueue.main.async{
+                            let nc = NotificationCenter.default
+                            nc.post(name: NSNotification.Name(rawValue: "BikesUpdated"), object: nil)
+                        }
+                    } else {
+                        print("Unable to get bikes")
+                    }
+                }
+            } catch let error {
+                // SESSION FAILURE
+                print(error)
+            }
+        }.resume()
+    }
 }

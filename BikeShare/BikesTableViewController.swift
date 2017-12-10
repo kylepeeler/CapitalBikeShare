@@ -20,6 +20,12 @@ class BikesTableViewController: UITableViewController, CLLocationManagerDelegate
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.startUpdatingLocation()
+        let nc = NotificationCenter.default
+        nc.addObserver(forName: NSNotification.Name(rawValue: "BikesUpdated"), object: nil, queue: nil){
+            notification in
+            //Reload the table view
+            self.tableView.reloadData()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -27,7 +33,21 @@ class BikesTableViewController: UITableViewController, CLLocationManagerDelegate
         if let location = locations.last{
             print("got latitude as \(location.coordinate.latitude)")
             print("got longitude as \(location.coordinate.longitude)")
+            let service = APIService()
+            service.getBikes(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)", distance: 1)
         }
         
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Bike.bikes.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BikeCell", for: indexPath)
+        cell.textLabel?.text = "\(Bike.bikes[indexPath.row].bike_code!)"
+        cell.detailTextLabel?.text = "\(Bike.bikes[indexPath.row].distance!) miles"
+        return cell
+    }
+
 }
