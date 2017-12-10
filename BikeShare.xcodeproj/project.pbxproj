@@ -8,20 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		271E20BC1FCCC3DB00FD83DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271E20BB1FCCC3DB00FD83DB /* AppDelegate.swift */; };
-		271E20BE1FCCC3DB00FD83DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271E20BD1FCCC3DB00FD83DB /* ViewController.swift */; };
+		271E20BE1FCCC3DB00FD83DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271E20BD1FCCC3DB00FD83DB /* LoginViewController.swift */; };
 		271E20C11FCCC3DB00FD83DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 271E20BF1FCCC3DB00FD83DB /* Main.storyboard */; };
 		271E20C31FCCC3DB00FD83DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271E20C21FCCC3DB00FD83DB /* Assets.xcassets */; };
 		271E20C61FCCC3DB00FD83DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 271E20C41FCCC3DB00FD83DB /* LaunchScreen.storyboard */; };
+		271E20EA1FCCC46E00FD83DB /* Athenaeum.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E11FCCC46E00FD83DB /* Athenaeum.gpx */; };
+		271E20EB1FCCC46E00FD83DB /* BankersLife.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E21FCCC46E00FD83DB /* BankersLife.gpx */; };
+		271E20EC1FCCC46E00FD83DB /* CentralLibrary.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E31FCCC46E00FD83DB /* CentralLibrary.gpx */; };
+		271E20ED1FCCC46E00FD83DB /* CityCountyBuilding.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E41FCCC46E00FD83DB /* CityCountyBuilding.gpx */; };
+		271E20EE1FCCC46E00FD83DB /* FletcherPlace.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E51FCCC46E00FD83DB /* FletcherPlace.gpx */; };
+		271E20EF1FCCC46E00FD83DB /* FountainSquare.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E61FCCC46E00FD83DB /* FountainSquare.gpx */; };
+		271E20F01FCCC46E00FD83DB /* IUPUICampusCenter.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E71FCCC46E00FD83DB /* IUPUICampusCenter.gpx */; };
+		271E20F11FCCC46E00FD83DB /* MonumentCircle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E81FCCC46E00FD83DB /* MonumentCircle.gpx */; };
+		271E20F21FCCC46E00FD83DB /* VictoryField.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E91FCCC46E00FD83DB /* VictoryField.gpx */; };
+		2772C8CE1FDCAC860066B07F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2772C8CD1FDCAC860066B07F /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		271E20B81FCCC3DB00FD83DB /* BikeShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		271E20BB1FCCC3DB00FD83DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		271E20BD1FCCC3DB00FD83DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		271E20BD1FCCC3DB00FD83DB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		271E20C01FCCC3DB00FD83DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		271E20C21FCCC3DB00FD83DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		271E20C51FCCC3DB00FD83DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		271E20C71FCCC3DB00FD83DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		271E20E11FCCC46E00FD83DB /* Athenaeum.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Athenaeum.gpx; path = GPXfiles/Athenaeum.gpx; sourceTree = "<group>"; };
+		271E20E21FCCC46E00FD83DB /* BankersLife.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BankersLife.gpx; path = GPXfiles/BankersLife.gpx; sourceTree = "<group>"; };
+		271E20E31FCCC46E00FD83DB /* CentralLibrary.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CentralLibrary.gpx; path = GPXfiles/CentralLibrary.gpx; sourceTree = "<group>"; };
+		271E20E41FCCC46E00FD83DB /* CityCountyBuilding.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CityCountyBuilding.gpx; path = GPXfiles/CityCountyBuilding.gpx; sourceTree = "<group>"; };
+		271E20E51FCCC46E00FD83DB /* FletcherPlace.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FletcherPlace.gpx; path = GPXfiles/FletcherPlace.gpx; sourceTree = "<group>"; };
+		271E20E61FCCC46E00FD83DB /* FountainSquare.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FountainSquare.gpx; path = GPXfiles/FountainSquare.gpx; sourceTree = "<group>"; };
+		271E20E71FCCC46E00FD83DB /* IUPUICampusCenter.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = IUPUICampusCenter.gpx; path = GPXfiles/IUPUICampusCenter.gpx; sourceTree = "<group>"; };
+		271E20E81FCCC46E00FD83DB /* MonumentCircle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MonumentCircle.gpx; path = GPXfiles/MonumentCircle.gpx; sourceTree = "<group>"; };
+		271E20E91FCCC46E00FD83DB /* VictoryField.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VictoryField.gpx; path = GPXfiles/VictoryField.gpx; sourceTree = "<group>"; };
+		2772C8CD1FDCAC860066B07F /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +58,7 @@
 		271E20AF1FCCC3DB00FD83DB = {
 			isa = PBXGroup;
 			children = (
+				271E20F31FCCC47400FD83DB /* GPX Locations */,
 				271E20BA1FCCC3DB00FD83DB /* BikeShare */,
 				271E20B91FCCC3DB00FD83DB /* Products */,
 			);
@@ -55,13 +76,30 @@
 			isa = PBXGroup;
 			children = (
 				271E20BB1FCCC3DB00FD83DB /* AppDelegate.swift */,
-				271E20BD1FCCC3DB00FD83DB /* ViewController.swift */,
+				271E20BD1FCCC3DB00FD83DB /* LoginViewController.swift */,
+				2772C8CD1FDCAC860066B07F /* APIService.swift */,
 				271E20BF1FCCC3DB00FD83DB /* Main.storyboard */,
 				271E20C21FCCC3DB00FD83DB /* Assets.xcassets */,
 				271E20C41FCCC3DB00FD83DB /* LaunchScreen.storyboard */,
 				271E20C71FCCC3DB00FD83DB /* Info.plist */,
 			);
 			path = BikeShare;
+			sourceTree = "<group>";
+		};
+		271E20F31FCCC47400FD83DB /* GPX Locations */ = {
+			isa = PBXGroup;
+			children = (
+				271E20E11FCCC46E00FD83DB /* Athenaeum.gpx */,
+				271E20E21FCCC46E00FD83DB /* BankersLife.gpx */,
+				271E20E31FCCC46E00FD83DB /* CentralLibrary.gpx */,
+				271E20E41FCCC46E00FD83DB /* CityCountyBuilding.gpx */,
+				271E20E51FCCC46E00FD83DB /* FletcherPlace.gpx */,
+				271E20E61FCCC46E00FD83DB /* FountainSquare.gpx */,
+				271E20E71FCCC46E00FD83DB /* IUPUICampusCenter.gpx */,
+				271E20E81FCCC46E00FD83DB /* MonumentCircle.gpx */,
+				271E20E91FCCC46E00FD83DB /* VictoryField.gpx */,
+			);
+			name = "GPX Locations";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +161,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271E20F01FCCC46E00FD83DB /* IUPUICampusCenter.gpx in Resources */,
+				271E20F21FCCC46E00FD83DB /* VictoryField.gpx in Resources */,
+				271E20EE1FCCC46E00FD83DB /* FletcherPlace.gpx in Resources */,
 				271E20C61FCCC3DB00FD83DB /* LaunchScreen.storyboard in Resources */,
 				271E20C31FCCC3DB00FD83DB /* Assets.xcassets in Resources */,
+				271E20ED1FCCC46E00FD83DB /* CityCountyBuilding.gpx in Resources */,
+				271E20EA1FCCC46E00FD83DB /* Athenaeum.gpx in Resources */,
+				271E20F11FCCC46E00FD83DB /* MonumentCircle.gpx in Resources */,
+				271E20EF1FCCC46E00FD83DB /* FountainSquare.gpx in Resources */,
 				271E20C11FCCC3DB00FD83DB /* Main.storyboard in Resources */,
+				271E20EB1FCCC46E00FD83DB /* BankersLife.gpx in Resources */,
+				271E20EC1FCCC46E00FD83DB /* CentralLibrary.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +183,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271E20BE1FCCC3DB00FD83DB /* ViewController.swift in Sources */,
+				271E20BE1FCCC3DB00FD83DB /* LoginViewController.swift in Sources */,
+				2772C8CE1FDCAC860066B07F /* APIService.swift in Sources */,
 				271E20BC1FCCC3DB00FD83DB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +347,7 @@
 				271E20CC1FCCC3DB00FD83DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
