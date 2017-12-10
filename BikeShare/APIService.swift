@@ -31,7 +31,7 @@ class APIService: NSObject {
                     if let apiRequestToken = parsedResult["user"]!["single_access_token"] {
                         requestToken = apiRequestToken as! String
                         let user = parsedResult["user"]!["username"] as! String
-                        UserDefaults.standard.set(user, forKey: "username")
+                        UserDefaults.standard.set(user, forKey: "Username")
                         UserDefaults.standard.set(requestToken, forKey: "RequestToken")
                         
                         DispatchQueue.main.async() {

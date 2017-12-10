@@ -22,6 +22,7 @@
 		271E20F11FCCC46E00FD83DB /* MonumentCircle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E81FCCC46E00FD83DB /* MonumentCircle.gpx */; };
 		271E20F21FCCC46E00FD83DB /* VictoryField.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 271E20E91FCCC46E00FD83DB /* VictoryField.gpx */; };
 		2772C8CE1FDCAC860066B07F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2772C8CD1FDCAC860066B07F /* APIService.swift */; };
+		2772C8D01FDCDCE90066B07F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2772C8CF1FDCDCE90066B07F /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		271E20E81FCCC46E00FD83DB /* MonumentCircle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MonumentCircle.gpx; path = GPXfiles/MonumentCircle.gpx; sourceTree = "<group>"; };
 		271E20E91FCCC46E00FD83DB /* VictoryField.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VictoryField.gpx; path = GPXfiles/VictoryField.gpx; sourceTree = "<group>"; };
 		2772C8CD1FDCAC860066B07F /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		2772C8CF1FDCDCE90066B07F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				271E20BB1FCCC3DB00FD83DB /* AppDelegate.swift */,
 				271E20BD1FCCC3DB00FD83DB /* LoginViewController.swift */,
 				2772C8CD1FDCAC860066B07F /* APIService.swift */,
+				2772C8CF1FDCDCE90066B07F /* ProfileViewController.swift */,
 				271E20BF1FCCC3DB00FD83DB /* Main.storyboard */,
 				271E20C21FCCC3DB00FD83DB /* Assets.xcassets */,
 				271E20C41FCCC3DB00FD83DB /* LaunchScreen.storyboard */,
@@ -185,6 +188,7 @@
 			files = (
 				271E20BE1FCCC3DB00FD83DB /* LoginViewController.swift in Sources */,
 				2772C8CE1FDCAC860066B07F /* APIService.swift in Sources */,
+				2772C8D01FDCDCE90066B07F /* ProfileViewController.swift in Sources */,
 				271E20BC1FCCC3DB00FD83DB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

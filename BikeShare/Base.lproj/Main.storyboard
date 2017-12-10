@@ -62,11 +62,8 @@
                                     <constraint firstAttribute="height" constant="75" id="TeA-le-cuQ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2O-S4-Zpy">
-                                <rect key="frame" x="164" y="283" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="cCl-Ch-4zL"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2O-S4-Zpy">
+                                <rect key="frame" x="110" y="283" width="154" height="30"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" red="0.88258272409439087" green="0.15506574511528015" blue="0.14689809083938599" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -80,6 +77,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5AN-1x-mXG">
+                                <rect key="frame" x="177" y="321" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -88,10 +88,13 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lHS-r0-0jf" secondAttribute="bottom" constant="438" id="7OB-hG-kAH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lHS-r0-0jf" secondAttribute="trailing" id="FMR-Ap-y8H"/>
                             <constraint firstItem="t2O-S4-Zpy" firstAttribute="top" secondItem="lHS-r0-0jf" secondAttribute="bottom" constant="54" id="Hzn-Fb-ecH"/>
+                            <constraint firstItem="5AN-1x-mXG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="161" id="QTf-df-3M4"/>
+                            <constraint firstItem="5AN-1x-mXG" firstAttribute="top" secondItem="t2O-S4-Zpy" secondAttribute="bottom" constant="8" id="RoD-55-I2O"/>
                             <constraint firstItem="t2O-S4-Zpy" firstAttribute="top" secondItem="s68-2k-uyy" secondAttribute="bottom" constant="8" symbolic="YES" id="Xg5-TC-TmU"/>
                             <constraint firstItem="RvD-1L-IDx" firstAttribute="centerX" secondItem="UU2-yc-JaV" secondAttribute="centerX" id="YPZ-Vn-hs5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UU2-yc-JaV" secondAttribute="trailing" id="afS-4D-eXe"/>
                             <constraint firstItem="RvD-1L-IDx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="19" id="dIq-fW-FnV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5AN-1x-mXG" secondAttribute="trailing" constant="162" id="de2-xQ-mlC"/>
                             <constraint firstItem="UU2-yc-JaV" firstAttribute="top" secondItem="RvD-1L-IDx" secondAttribute="bottom" constant="23" id="f3G-Sg-wfV"/>
                             <constraint firstItem="lHS-r0-0jf" firstAttribute="top" secondItem="UU2-yc-JaV" secondAttribute="bottom" constant="13" id="fbW-2o-6fy"/>
                             <constraint firstItem="UU2-yc-JaV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gmC-ta-X1x"/>
@@ -101,7 +104,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="5AN-1x-mXG" id="w6Y-bo-RxW"/>
                         <outlet property="lblErrorMsg" destination="s68-2k-uyy" id="3eg-0M-Qs9"/>
+                        <outlet property="loginBtn" destination="t2O-S4-Zpy" id="pvT-nj-Dig"/>
                         <outlet property="txtPassword" destination="Vjf-gd-NRR" id="nG7-QU-L0m"/>
                         <outlet property="txtUsername" destination="3Fq-ct-QZ4" id="KMV-8w-Qsj"/>
                         <segue destination="4Ku-bH-zFX" kind="show" identifier="segueValidLogin" id="KLd-Uq-n76"/>
@@ -109,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="283"/>
+            <point key="canvasLocation" x="413.60000000000002" y="282.90854572713647"/>
         </scene>
         <!--Bikes-->
         <scene sceneID="lVH-xh-noP">
@@ -225,7 +230,7 @@
         <!--Profile-->
         <scene sceneID="t5r-VY-ZcY">
             <objects>
-                <viewController id="V2J-Fj-HKM" sceneMemberID="viewController">
+                <viewController id="V2J-Fj-HKM" customClass="ProfileViewController" customModule="BikeShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GH7-SI-MkD"/>
                         <viewControllerLayoutGuide type="bottom" id="bcw-SM-hp8"/>
@@ -235,14 +240,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPs-pS-kE5">
-                                <rect key="frame" x="52" y="127" width="84" height="21"/>
+                                <rect key="frame" x="16" y="138" width="84" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Single Access Token:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfo-0y-TRI">
-                                <rect key="frame" x="52" y="183" width="162" height="21"/>
+                                <rect key="frame" x="16" y="183" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SingleAccessToken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZk-Mv-Icl">
+                                <rect key="frame" x="186" y="183" width="189" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeR-6z-PuW">
+                                <rect key="frame" x="186" y="138" width="124" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -252,6 +271,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="Vmg-6n-DUJ"/>
+                    <connections>
+                        <outlet property="lblAccessToken" destination="zZk-Mv-Icl" id="T6X-kR-Ik8"/>
+                        <outlet property="lblUsername" destination="eeR-6z-PuW" id="hP4-I6-qBK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiz-ZY-JJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
