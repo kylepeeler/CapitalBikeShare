@@ -27,11 +27,8 @@ class RidesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RideCell", for: indexPath)
-        if let ride = Ride.rides[indexPath.row] as? Ride {
-            let dateFormatter = DateFormatter()
-            cell.textLabel?.text = Ride.convertDateToReadable(date: ride.start_time!)
-            cell.detailTextLabel?.text = Ride.convertCentsToReadable(cost: ride.total_cost!)
-        }
+        cell.textLabel?.text = Ride.convertDateToReadable(date: Ride.rides[indexPath.row].start_time!)
+        cell.detailTextLabel?.text = Ride.convertCentsToReadable(cost: Ride.rides[indexPath.row].total_cost!)
         return cell
     }
     

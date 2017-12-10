@@ -50,13 +50,11 @@ class APIService: NSObject {
         }.resume()
     }
     
-    
     func getRides(){
         guard let token = UserDefaults.standard.string(forKey: "RequestToken") else{
             return
         }
         let urlString = "https://" + baseURL + "rides/" + token
-        print("getting rides with url \(urlString)")
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -74,7 +72,6 @@ class APIService: NSObject {
                         print("rides is \(rides)")
                         Ride.rides = [Ride]()
                         for dict in rides {
-                            //Create blank movie object
                             let ride = Ride()
                             ride.id = dict["id"] as? Int
                             ride.start_time = dict["start"] as? String
@@ -92,10 +89,7 @@ class APIService: NSObject {
                             nc.post(name: NSNotification.Name(rawValue: "RidesUpdated"), object: nil)
                         }
                     } else {
-                        if let status_code = parsedResult["status_code"] as? Int {
-                            let message = parsedResult["status_message"]
-                            print("\(status_code): \(message)")
-                        }
+                        print("Unable to get rides")
                     }
                 }
             } catch let error {
@@ -123,37 +117,16 @@ class APIService: NSObject {
             }
             do {
                 if let parsedResult = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
-                    print("parsed result is \(parsedResult)")
                     if let result = parsedResult["ride"] as? [String: AnyObject] {
-                        print("rides code is \(result["bike_code"]!)")
-                        
                         if let i = Ride.rides.index(where: {$0.id! == result["id"] as! Int}){
-                            Ride.rides[i].bike_code = result["bike_code"] as! Int
-                            // Once we have parsed all of the rides, send a notification
+                            Ride.rides[i].bike_code = result["bike_code"] as? Int
                             DispatchQueue.main.async{
                                 let nc = NotificationCenter.default
                                 nc.post(name: NSNotification.Name(rawValue: "RideUpdated"), object: nil)
                             }
                         }
-//                        Ride.rides = [Ride]()
-//                        for dict in rides {
-//                            //Create blank movie object
-//                            let ride = Ride()
-//                            ride.id = dict["id"] as? Int
-//                            ride.start_time = dict["start"] as? String
-//                            ride.end_time = dict["end"] as? String
-//                            ride.start_latitude = dict["start_latitude"] as? String
-//                            ride.start_longitude = dict["start_longitude"] as? String
-//                            ride.end_latitude = dict["end_latitude"] as? String
-//                            ride.end_longitude = dict["longitude"] as? String
-//                            ride.total_cost = dict["total_cost"] as? Int
-//                            Ride.rides.append(ride)
-//                        }
                     } else {
-                        if let status_code = parsedResult["status_code"] as? Int {
-                            let message = parsedResult["status_message"]
-                            print("\(status_code): \(message)")
-                        }
+                       print("Unable to get ride id \(id)")
                     }
                 }
             } catch let error {
