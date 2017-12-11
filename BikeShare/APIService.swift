@@ -90,7 +90,6 @@ class APIService: NSObject {
                     }
                 }
             } catch let error {
-                // SESSION FAILURE
                 print(error)
             }
         }.resume()
@@ -101,7 +100,6 @@ class APIService: NSObject {
             return
         }
         let urlString = "https://" + baseURL + "rides/" + token + "/" + "\(id)"
-        print("getting ride \(id) with url \(urlString)")
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -127,7 +125,6 @@ class APIService: NSObject {
                     }
                 }
             } catch let error {
-                // SESSION FAILURE
                 print(error)
             }
         }.resume()
@@ -138,7 +135,6 @@ class APIService: NSObject {
             return
         }
         let urlString = "https://" + baseURL + "bikes/near/" + token + "/" + latitude + "/" + longitude + "/" + "\(distance)"
-        print("getting bikes at URL \(urlString)")
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -171,7 +167,6 @@ class APIService: NSObject {
                     }
                 }
             } catch let error {
-                // SESSION FAILURE
                 print(error)
             }
         }.resume()
@@ -182,7 +177,6 @@ class APIService: NSObject {
             return
         }
         let urlString = "https://" + baseURL + "rides/startride/" + token + "/" + "\(bikecode)" + "/\(location.latitude)/\(location.longitude)"
-        print("starting ride at URL \(urlString)")
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -211,7 +205,6 @@ class APIService: NSObject {
                     }
                 }
             } catch let error {
-                // SESSION FAILURE
                 print(error)
             }
             }.resume()
@@ -222,7 +215,6 @@ class APIService: NSObject {
             return
         }
         let urlString = "https://" + baseURL + "rides/endride/" + token + "/" + "\(rideID)" + "/\(location.latitude)/\(location.longitude)"
-        print("ending ride at URL \(urlString)")
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -245,7 +237,6 @@ class APIService: NSObject {
                         endedRide.ending_latitude = result["latitude"] as? String
                         endedRide.ending_longitude = result["longitude"] as? String
                         endedRide.total_cost = result["total_cost"] as? Int
-                        print("ended ride \(endedRide.id!)")
                         DispatchQueue.main.async {
                             let nc = NotificationCenter.default
                             nc.post(name: NSNotification.Name(rawValue: "RideEndedAndUpdated"), object: nil)
@@ -255,7 +246,6 @@ class APIService: NSObject {
                     }
                 }
             } catch let error {
-                // SESSION FAILURE
                 print(error)
             }
             }.resume()

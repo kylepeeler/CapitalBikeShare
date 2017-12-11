@@ -12,6 +12,7 @@ import MapKit
 class RideDetailViewController: UIViewController, MKMapViewDelegate {
     
     var selectedRide: Ride!
+    
     @IBOutlet var bikeCodeLabel: UILabel!
     @IBOutlet var rideStartTimeLabel: UILabel!
     @IBOutlet var rideEndTimeLabel: UILabel!
@@ -94,20 +95,15 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     }
     
     func calculateRegionSize(location1: CLLocationCoordinate2D, location2: CLLocationCoordinate2D) -> Double {
-        // Create CLLocation Objects
         let regionLocation1: CLLocation = CLLocation(latitude: location1.latitude, longitude: location1.longitude)
         let regionLocation2: CLLocation = CLLocation(latitude: location2.latitude, longitude: location2.longitude)
-        
-        //Use built in function to calculate the distance between the two
         let distanceInMeters: CLLocationDistance = regionLocation1.distance(from: regionLocation2)
         
         return distanceInMeters
     }
     
     func centerMapOnLocation(locationCoord: CLLocationCoordinate2D, distance: Double){
-        //Define the region
         let mappedRegion = MKCoordinateRegionMakeWithDistance(locationCoord, distance, distance)
-        //Move the map
         startEndMap.setRegion(mappedRegion, animated: true);
     }
     

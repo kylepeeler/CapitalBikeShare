@@ -16,7 +16,6 @@ class RidesTableViewController: UITableViewController {
         let nc = NotificationCenter.default
         nc.addObserver(forName: NSNotification.Name(rawValue: "RidesUpdated"), object: nil, queue: nil){
             notification in
-            //Reload the table view
             self.tableView.reloadData()
         }
         self.navigationItem.setHidesBackButton(true, animated:false)

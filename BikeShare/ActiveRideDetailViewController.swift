@@ -11,14 +11,14 @@ import MapKit
 
 class ActiveRideDetailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    var locationManager: CLLocationManager!
+    var currentLocation: CLLocationCoordinate2D?
+    var activeRide: ActiveRide!
+    
     @IBOutlet weak var bikeCodeLabel: UILabel!
     @IBOutlet weak var unlockCodeLabel: UILabel!
     @IBOutlet weak var activeRideMap: MKMapView!
-    var locationManager: CLLocationManager!
-    var currentLocation: CLLocationCoordinate2D?
-    
-    var activeRide: ActiveRide!
-    
+
     override func viewDidAppear(_ animated: Bool) {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -92,9 +92,7 @@ class ActiveRideDetailViewController: UIViewController, MKMapViewDelegate, CLLoc
     }
     
     func centerMapOnLocation(locationCoord: CLLocationCoordinate2D, distance: Double){
-        //Define the region
         let mappedRegion = MKCoordinateRegionMakeWithDistance(locationCoord, distance, distance)
-        //Move the map
         activeRideMap.setRegion(mappedRegion, animated: true);
         
     }
@@ -110,13 +108,9 @@ class ActiveRideDetailViewController: UIViewController, MKMapViewDelegate, CLLoc
         activeRideMap.addAnnotation(startLocationAnnotation)
     }
     
-    // CLLocationManager Delegate FUNCTIONS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //Calculate the center point
         let centerPoint: CLLocationCoordinate2D = calculateCenterPoint(location1: activeRide.start_location, location2: locations.last!.coordinate)
-        //Calculate the region size
         let regionSize = calculateRegionSize(location1: activeRide.start_location, location2: locations.last!.coordinate)
-        //Move the Map
         centerMapOnLocation(locationCoord: centerPoint, distance: regionSize)
         currentLocation = locations.last!.coordinate
     }

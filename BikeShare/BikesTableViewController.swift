@@ -23,7 +23,6 @@ class BikesTableViewController: UITableViewController, CLLocationManagerDelegate
         let nc = NotificationCenter.default
         nc.addObserver(forName: NSNotification.Name(rawValue: "BikesUpdated"), object: nil, queue: nil){
             notification in
-            //Reload the table view
             self.tableView.reloadData()
         }
     }
