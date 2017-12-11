@@ -21,7 +21,11 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         rideStartTimeLabel.text = Ride.convertDateToReadable(date: selectedRide.start_time!)
-        rideEndTimeLabel.text = Ride.convertDateToReadable(date: selectedRide.end_time!)
+        if let endTime = selectedRide.end_time{
+            rideEndTimeLabel.text = Ride.convertDateToReadable(date: endTime)
+        }else{
+            rideEndTimeLabel.text = "Ride currently active"
+        }
         totalCostLabel.text = Ride.convertCentsToReadable(cost: selectedRide.total_cost!)
         rideDurationLabel.text = selectedRide.time_difference
     }
@@ -96,7 +100,6 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
         let mappedRegion = MKCoordinateRegionMakeWithDistance(locationCoord, distance, distance)
         //Move the map
         startEndMap.setRegion(mappedRegion, animated: true);
-        
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class APIService: NSObject {
     let baseURL = "bikeshare-iupui-fa17.herokuapp.com/api/v1/"
@@ -178,5 +179,45 @@ class APIService: NSObject {
                 print(error)
             }
         }.resume()
+    }
+    
+    func startRide(bikecode: Int, location: CLLocationCoordinate2D){
+        guard let token = UserDefaults.standard.string(forKey: "RequestToken") else{
+            return
+        }
+        let urlString = "https://" + baseURL + "rides/startride/" + token + "/" + "\(bikecode)" + "/\(location.latitude)/\(location.longitude)"
+        print("starting ride at URL \(urlString)")
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                if let parsedResult = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
+                    if let result = parsedResult["ride"] as? [String: AnyObject] {                            let activeRide = ActiveRide.currentRide
+                        activeRide.bike_code = result["bike_code"] as? Int
+                        activeRide.id = result["id"] as? Int
+                        activeRide.unlock_code = result["unlock_code"] as? Int
+                        activeRide.status = result["status"] as? Int
+                        activeRide.latitude = result["latitude"] as? String
+                        activeRide.longitude = result["longitude"] as? String
+                        DispatchQueue.main.async {
+                            let nc = NotificationCenter.default
+                            nc.post(name: NSNotification.Name(rawValue: "ActiveRideSet"), object: nil)
+                        }
+                    } else {
+                        print("Unable to start ride")
+                    }
+                }
+            } catch let error {
+                // SESSION FAILURE
+                print(error)
+            }
+            }.resume()
     }
 }

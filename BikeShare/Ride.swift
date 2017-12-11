@@ -33,16 +33,25 @@ class Ride: NSObject {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
             dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
-            return dateFormatter.date(from: end_time!)
+            if let endTime = end_time{
+                return dateFormatter.date(from: endTime)
+            }else{
+                return nil
+            }
         }
     }
     var time_difference: String?{
         get{
-            let formatter = DateComponentsFormatter()
-            formatter.unitsStyle = .full
-            formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
-            formatter.maximumUnitCount = 2
-            return formatter.string(from: start_time_as_date!, to: end_time_as_date!)
+            if end_time_as_date != nil {
+                let formatter = DateComponentsFormatter()
+                formatter.unitsStyle = .full
+                formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
+                formatter.maximumUnitCount = 2
+                return formatter.string(from: start_time_as_date!, to: end_time_as_date!)
+            }else{
+                return "Ride currently active"
+            }
+            
         }
     }
     var start_location: CLLocationCoordinate2D{
