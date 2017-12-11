@@ -28,10 +28,12 @@ class BikesTableViewController: UITableViewController, CLLocationManagerDelegate
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated:false)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
-            print("got latitude as \(location.coordinate.latitude)")
-            print("got longitude as \(location.coordinate.longitude)")
             let service = APIService()
             service.getBikes(latitude: "\(location.coordinate.latitude)", longitude: "\(location.coordinate.longitude)", distance: 1)
         }

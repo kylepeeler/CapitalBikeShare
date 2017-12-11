@@ -31,9 +31,33 @@ class ActiveRideDetailViewController: UIViewController, MKMapViewDelegate, CLLoc
     }
     
     @IBAction func endRide(_ sender: Any) {
-       print("active ride id is \(activeRide.id!)")
-       print("current location latitude is \(currentLocation!.latitude)")
-       print("current location longitude is \(currentLocation!.longitude)")
+        let service = APIService()
+        if let endRideLocation = currentLocation{
+            service.endRide(rideID: activeRide.id!, location: endRideLocation)
+            let nc = NotificationCenter.default
+            nc.addObserver(forName: NSNotification.Name(rawValue: "RideEndedAndUpdated"), object: nil, queue: nil){
+                notification in
+                self.performSegue(withIdentifier: "endRide", sender: nil)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "endRide" {
+            let detailView = segue.destination as! RideDetailViewController
+            let endedRide = Ride()
+            endedRide.id = EndedRide.lastEndedRide.id
+            endedRide.start_time = EndedRide.lastEndedRide.start_time
+            endedRide.end_time = EndedRide.lastEndedRide.end_time
+            endedRide.start_latitude = "\(activeRide.start_location.latitude)"
+            endedRide.start_longitude = "\(activeRide.start_location.longitude)"
+            endedRide.end_latitude = EndedRide.lastEndedRide.ending_latitude
+            endedRide.end_longitude = EndedRide.lastEndedRide.ending_longitude
+            endedRide.total_cost = EndedRide.lastEndedRide.total_cost
+            endedRide.bike_code = EndedRide.lastEndedRide.bike_code
+            detailView.selectedRide = endedRide
+            
+        }
     }
     
     func calculateCenterPoint(location1: CLLocationCoordinate2D, location2: CLLocationCoordinate2D) -> CLLocationCoordinate2D {

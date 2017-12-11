@@ -35,7 +35,7 @@
                                         <rect key="frame" x="93.5" y="0.0" width="249.5" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -461,6 +461,14 @@
                                 <rect key="frame" x="16" y="383" width="343" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCV-JG-ho2">
+                                <rect key="frame" x="136" y="305" width="103" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start New Ride"/>
+                                <connections>
+                                    <segue destination="Oc2-Qt-cyE" kind="show" id="cca-x4-VxN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -470,6 +478,7 @@
                         <outlet property="rideEndTimeLabel" destination="fOg-ig-axF" id="hbt-n1-DDO"/>
                         <outlet property="rideStartTimeLabel" destination="VD3-RB-vHn" id="8H6-4K-C3N"/>
                         <outlet property="startEndMap" destination="Wyh-FI-zbV" id="MMv-op-MX0"/>
+                        <outlet property="startNewRideBtn" destination="XCV-JG-ho2" id="Quk-Ms-nxB"/>
                         <outlet property="totalCostLabel" destination="9C0-Ik-Ps7" id="57k-UN-tJo"/>
                     </connections>
                 </viewController>
@@ -521,14 +530,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeR-6z-PuW">
-                                <rect key="frame" x="194" y="88" width="124" height="21"/>
+                                <rect key="frame" x="143" y="88" width="175" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SingleAccessToken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZk-Mv-Icl">
-                                <rect key="frame" x="194" y="133" width="181" height="21"/>
+                                <rect key="frame" x="143" y="133" width="232" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -545,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiz-ZY-JJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3198" y="1044"/>
+            <point key="canvasLocation" x="3197.5999999999999" y="1043.9280359820091"/>
         </scene>
         <!--Rides-->
         <scene sceneID="WD5-Ob-bLn">
@@ -592,6 +601,7 @@
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sbq-pA-8lY"/>
+        <segue reference="iMN-Jf-vkC"/>
+        <segue reference="cca-x4-VxN"/>
     </inferredMetricsTieBreakers>
 </document>

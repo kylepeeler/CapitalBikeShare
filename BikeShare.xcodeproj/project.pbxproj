@@ -31,6 +31,7 @@
 		2772C8DC1FDDC4FD0066B07F /* BikeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2772C8DB1FDDC4FD0066B07F /* BikeDetailViewController.swift */; };
 		2772C8DE1FDDCD260066B07F /* ActiveRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2772C8DD1FDDCD260066B07F /* ActiveRideDetailViewController.swift */; };
 		277E30D51FDDF21E00E5B32B /* ActiveRide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E30D41FDDF21E00E5B32B /* ActiveRide.swift */; };
+		277E30D71FDE11F200E5B32B /* EndedRide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E30D61FDE11F200E5B32B /* EndedRide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		2772C8DB1FDDC4FD0066B07F /* BikeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailViewController.swift; sourceTree = "<group>"; };
 		2772C8DD1FDDCD260066B07F /* ActiveRideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRideDetailViewController.swift; sourceTree = "<group>"; };
 		277E30D41FDDF21E00E5B32B /* ActiveRide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRide.swift; sourceTree = "<group>"; };
+		277E30D61FDE11F200E5B32B /* EndedRide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndedRide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				2772C8D31FDCEDC80066B07F /* BikesTableViewController.swift */,
 				2772C8D51FDCFF270066B07F /* Ride.swift */,
 				277E30D41FDDF21E00E5B32B /* ActiveRide.swift */,
+				277E30D61FDE11F200E5B32B /* EndedRide.swift */,
 				2772C8D91FDDBCD50066B07F /* Bike.swift */,
 				271E20C21FCCC3DB00FD83DB /* Assets.xcassets */,
 				271E20C41FCCC3DB00FD83DB /* LaunchScreen.storyboard */,
@@ -215,6 +218,7 @@
 				2772C8CE1FDCAC860066B07F /* APIService.swift in Sources */,
 				2772C8D01FDCDCE90066B07F /* ProfileViewController.swift in Sources */,
 				2772C8D41FDCEDC80066B07F /* BikesTableViewController.swift in Sources */,
+				277E30D71FDE11F200E5B32B /* EndedRide.swift in Sources */,
 				2772C8DA1FDDBCD50066B07F /* Bike.swift in Sources */,
 				271E20BC1FCCC3DB00FD83DB /* AppDelegate.swift in Sources */,
 				2772C8D61FDCFF270066B07F /* Ride.swift in Sources */,

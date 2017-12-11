@@ -18,6 +18,7 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var rideDurationLabel: UILabel!
     @IBOutlet var totalCostLabel: UILabel!
     @IBOutlet weak var startEndMap: MKMapView!
+    @IBOutlet weak var startNewRideBtn: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         rideStartTimeLabel.text = Ride.convertDateToReadable(date: selectedRide.start_time!)
@@ -28,15 +29,23 @@ class RideDetailViewController: UIViewController, MKMapViewDelegate {
         }
         totalCostLabel.text = Ride.convertCentsToReadable(cost: selectedRide.total_cost!)
         rideDurationLabel.text = selectedRide.time_difference
+        if let bikeCode = selectedRide.bike_code {
+            bikeCodeLabel.text = "\(bikeCode)"
+            self.navigationItem.setHidesBackButton(true, animated:false)
+            self.title = "Ride Ended"
+            startNewRideBtn.isHidden = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let nc = NotificationCenter.default
         let service = APIService()
         service.getRide(id: selectedRide.id!)
-        nc.addObserver(forName: NSNotification.Name(rawValue: "RideUpdated"), object: nil, queue: nil){
-            notification in
-            self.bikeCodeLabel.text = "\(self.selectedRide.bike_code!)"
+        if (selectedRide.bike_code == nil){
+            nc.addObserver(forName: NSNotification.Name(rawValue: "RideUpdated"), object: nil, queue: nil){
+                notification in
+                self.bikeCodeLabel.text = "\(self.selectedRide.bike_code!)"
+            }
         }
         if (selectedRide.end_latitude != nil && selectedRide.end_longitude != nil) {
             let centerPoint: CLLocationCoordinate2D = calculateCenterPoint(location1: selectedRide.start_location, location2: selectedRide.end_location)

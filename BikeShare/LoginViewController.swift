@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
         nc.addObserver(forName: NSNotification.Name(rawValue: "RequestTokenSuccess"), object: nil, queue: nil) { notification in
             self.activityIndicator.stopAnimating()
             self.loginBtn.setTitle("Log In", for: .normal)
-            print("Received valid request token")
             self.performSegue(withIdentifier: "segueValidLogin", sender: nil)
         }
 

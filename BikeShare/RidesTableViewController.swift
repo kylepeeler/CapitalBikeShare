@@ -19,6 +19,7 @@ class RidesTableViewController: UITableViewController {
             //Reload the table view
             self.tableView.reloadData()
         }
+        self.navigationItem.setHidesBackButton(true, animated:false)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -14,7 +14,6 @@ class APIService: NSObject {
     
     func login(username: String, password: String){
         let urlString = "https://" + username + ":" + password + "@" + baseURL + "users/login"
-        print("logging in at \(urlString)")
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -28,7 +27,6 @@ class APIService: NSObject {
             }
             do {
                 if let parsedResult = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
-                    print(parsedResult);
                     if let apiRequestToken = parsedResult["user"]!["single_access_token"] {
                         requestToken = apiRequestToken as! String
                         let user = parsedResult["user"]!["username"] as! String
@@ -68,9 +66,7 @@ class APIService: NSObject {
             }
             do {
                 if let parsedResult = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
-                    print("parsed result is \(parsedResult)")
                     if let rides = parsedResult["rides"] as? [[String: AnyObject]] {
-                        print("rides is \(rides)")
                         Ride.rides = [Ride]()
                         for dict in rides {
                             let ride = Ride()
@@ -209,6 +205,50 @@ class APIService: NSObject {
                         DispatchQueue.main.async {
                             let nc = NotificationCenter.default
                             nc.post(name: NSNotification.Name(rawValue: "ActiveRideSet"), object: nil)
+                        }
+                    } else {
+                        print("Unable to start ride")
+                    }
+                }
+            } catch let error {
+                // SESSION FAILURE
+                print(error)
+            }
+            }.resume()
+    }
+    
+    func endRide(rideID: Int, location: CLLocationCoordinate2D){
+        guard let token = UserDefaults.standard.string(forKey: "RequestToken") else{
+            return
+        }
+        let urlString = "https://" + baseURL + "rides/endride/" + token + "/" + "\(rideID)" + "/\(location.latitude)/\(location.longitude)"
+        print("ending ride at URL \(urlString)")
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                if let parsedResult = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
+                    if let result = parsedResult["ride"] as? [String: AnyObject] {
+                        let endedRide = EndedRide.lastEndedRide
+                        endedRide.id = result["id"] as? Int
+                        endedRide.start_time = result["start"] as? String
+                        endedRide.end_time = result["end"] as? String
+                        endedRide.bike_code = result["bike_code"] as? Int
+                        endedRide.status = result["status"] as? Int
+                        endedRide.ending_latitude = result["latitude"] as? String
+                        endedRide.ending_longitude = result["longitude"] as? String
+                        endedRide.total_cost = result["total_cost"] as? Int
+                        print("ended ride \(endedRide.id!)")
+                        DispatchQueue.main.async {
+                            let nc = NotificationCenter.default
+                            nc.post(name: NSNotification.Name(rawValue: "RideEndedAndUpdated"), object: nil)
                         }
                     } else {
                         print("Unable to start ride")
