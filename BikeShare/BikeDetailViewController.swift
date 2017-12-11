@@ -95,7 +95,6 @@ class BikeDetailViewController: UIViewController, CLLocationManagerDelegate,MKMa
 
     }
     
-    // CLLocationManager Delegate FUNCTIONS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //Calculate the center point
         let centerPoint: CLLocationCoordinate2D = calculateCenterPoint(location1: selectedBike.bike_location, location2: locations.last!.coordinate)

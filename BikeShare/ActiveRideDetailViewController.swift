@@ -100,7 +100,6 @@ class ActiveRideDetailViewController: UIViewController, MKMapViewDelegate, CLLoc
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //self.title = "Bike \(selectedBike.bike_code!) Detail"
         bikeCodeLabel.text = "\(activeRide.bike_code!)"
         unlockCodeLabel.text = "\(activeRide.unlock_code!)"
         
